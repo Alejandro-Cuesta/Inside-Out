@@ -29,7 +29,13 @@ public class Diary {
     }
 
     public List<Moment> filterByEmotion(Emotion emotion) { //Devolver metodos que coincidad con una emocion//
-        return null; 
+        List<Moment> filtered = new ArrayList<>();
+        for (Moment moment : moments) {
+            if (moment.getEmotion() == emotion) {
+                filtered.add(moment);
+            }
+        }
+        return filtered;
     }
 
     public List<Moment> filterByDate(LocalDate date) { //Devolver metodos que coincidan con la fecha//
