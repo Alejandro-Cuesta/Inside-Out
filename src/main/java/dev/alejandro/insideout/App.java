@@ -1,17 +1,12 @@
 package dev.alejandro.insideout;
 
-/**
- * Hello world!
- */
-public final class App {
-    private App() {
-    }
+import dev.alejandro.insideout.service.Diary;
+import dev.alejandro.insideout.consol.Consol;
 
-    /**
-     * Says hello to the world.
-     * @param args The arguments of the program.
-     */
+public class App {
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        Diary diary = new Diary();
+        Consol consol = new Consol(diary);
+        consol.start();
     }
 }
