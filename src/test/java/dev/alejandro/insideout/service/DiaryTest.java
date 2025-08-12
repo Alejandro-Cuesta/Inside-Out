@@ -114,7 +114,7 @@ public class DiaryTest {
     diary.addMoment(moment1);
     diary.addMoment(moment2);
 
-    List<moment> filtered = diary.filterByDate(LocalDate.of(2024, 5, 1));
+    List<Moment> filtered = diary.filterByDate(LocalDate.of(2024, 5, 1));
 
     assertNotNull(filtered, "La lista filtrada no debería ser nula");
     assertEquals(1, filtered.size(), "Debería haber un solo momento con la fecha indicada");
