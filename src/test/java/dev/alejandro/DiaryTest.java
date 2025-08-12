@@ -1,10 +1,12 @@
 
-package dev.alejandro.insideout.service;
+package dev.alejandro;
 
-import dev.alejandro.insideout.model.Emotion;
-import dev.alejandro.insideout.model.Moment;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import dev.alejandro.models.Emotion;
+import dev.alejandro.models.Moment;
+import dev.alejandro.service.Diary;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;

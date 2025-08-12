@@ -1,7 +1,8 @@
-package dev.alejandro.insideout.model;
+package dev.alejandro.models;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 public class Moment { //Representa un momento vivido en el Diario y toda la informacion de ese momento//
      //Artributos basicos de un momento//
@@ -15,6 +16,17 @@ public class Moment { //Representa un momento vivido en el Diario y toda la info
 
     public Moment() {
 
+    }
+
+    public Moment(int id, String title, String description, Emotion emotion,
+                  LocalDate momentDate, LocalDateTime creationDate, LocalDateTime modificationDate) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.emotion = emotion;
+        this.momentDate = momentDate;
+        this.creationDate = creationDate;
+        this.modificationDate = modificationDate;
     }
 
     //Getters y Setters//

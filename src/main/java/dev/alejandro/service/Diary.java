@@ -1,11 +1,11 @@
-package dev.alejandro.insideout.service;
-
-import dev.alejandro.insideout.model.Moment;
-import dev.alejandro.insideout.model.Emotion;
+package dev.alejandro.service;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+
+import dev.alejandro.models.Emotion;
+import dev.alejandro.models.Moment;
 
  //Aquí irá toda la lógica: añadir, eliminar, listar y filtrar momentos//
 public class Diary {
