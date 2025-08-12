@@ -39,6 +39,12 @@ public class Diary {
     }
 
     public List<Moment> filterByDate(LocalDate date) { //Devolver metodos que coincidan con la fecha//
-        return null;
+        List<Moment> filtered = new ArrayList<>();
+        for (Moment moment : moments) {
+            if (moment.getMomentDate().equals(date)) {
+                filtered.add(moment);
+            }
+        }
+        return filtered;
     }
 }
