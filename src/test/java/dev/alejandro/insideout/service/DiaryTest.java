@@ -23,7 +23,7 @@ public class DiaryTest {
     }
 
     @Test
-void testAddMomentAndGetAllMoments() { //añadir un momento//
+    void testAddMomentAndGetAllMoments() { //añadir un momento//
     Moment moment = new Moment();
     moment.setId(1);
     moment.setTitle("Un día en el parque de atracciones");
@@ -40,5 +40,26 @@ void testAddMomentAndGetAllMoments() { //añadir un momento//
     assertNotNull(moments, "La lista no debería ser nula");
     assertEquals(1, moments.size(), "Debería haber un momento guardado");
     assertEquals("Un día en el parque de atracciones", moments.get(0).getTitle(), "El título debería coincidir");
-}
+    }
+
+    @Test
+    public void testRemoveMomentById() {
+    Moment moment = new Moment();
+    moment.setId(1);
+    moment.setTitle("Un dia en el parque de atracciones");
+    moment.setDescription("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sed eros vel massa scelerisque convallis interdum ut purus.");
+    moment.setEmotion(Emotion.ALEGRIA);
+    moment.setMomentDate(LocalDate.of(2024, 5, 1));
+    moment.setCreationDate(LocalDateTime.now());
+    moment.setModificationDate(LocalDateTime.now());
+
+    diary.addMoment(moment);
+
+    boolean removed = diary.removeMomentById(1);
+
+    assertTrue(removed, "El momento debería eliminarse correctamente");
+    assertTrue(diary.getAllMoments().isEmpty(), "La lista de momentos debería estar vacía después de eliminar");
+    }
+
+
 }

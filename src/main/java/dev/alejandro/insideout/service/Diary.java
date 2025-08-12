@@ -24,8 +24,8 @@ public class Diary {
         return moments;
     }
 
-    public boolean removeMomentById(int id) { //Eliminar metodo po Id//
-        return false;
+    public boolean removeMomentById(int id) { //Eliminar metodo por Id//
+        return moments.removeIf(moment -> moment.getId() == id);
     }
 
     public List<Moment> filterByEmotion(Emotion emotion) { //Devolver metodos que coincidad con una emocion//
