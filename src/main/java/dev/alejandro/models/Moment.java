@@ -52,9 +52,9 @@ public class Moment { //Representa un momento vivido en el Diario y toda la info
     public void setModificationDate(LocalDateTime modificationDate) { this.modificationDate = modificationDate; }
 
 
-     @Override
+    @Override //Metodo toString de la clase Moment//
     public String toString() {
-        return "Moment{" +
+        return "Moment{" + //Devuelve un String que muestra todos los atributos del objeto//
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
