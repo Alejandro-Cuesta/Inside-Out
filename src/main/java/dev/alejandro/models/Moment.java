@@ -51,4 +51,17 @@ public class Moment { //Representa un momento vivido en el Diario y toda la info
     public LocalDateTime getModificationDate() { return modificationDate; }
     public void setModificationDate(LocalDateTime modificationDate) { this.modificationDate = modificationDate; }
 
+
+     @Override
+    public String toString() {
+        return "Moment{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", emotion=" + emotion +
+                ", momentDate=" + momentDate +
+                ", creationDate=" + creationDate +
+                ", modificationDate=" + modificationDate +
+                '}';
+    }
 }
