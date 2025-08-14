@@ -15,20 +15,21 @@ public class MomentMapper {
     //Convierte un DTO de entrada en un objeto Moment
     public static Moment toEntity(MomentDTOInput dto) {
         Moment moment = new Moment();
+    
 
         // ID no se asigna aquí, lo pone la base de datos o lógica de negocio
-        moment.setTitle(dto.getTitle());
-        moment.setDescription(dto.getDescription());
+        moment.setTitle(dto.title());
+        moment.setDescription(dto.description());
 
         // Convertimos el String de emoción a Enum
         try {
-            moment.setEmotion(Emotion.valueOf(dto.getEmotion().toUpperCase()));
+            moment.setEmotion(Emotion.valueOf(dto.emotion().toUpperCase()));
         } 
             catch (IllegalArgumentException e) {
-            throw new RuntimeException("Emoción no válida: " + dto.getEmotion());
+            throw new RuntimeException("Emoción no válida: " + dto.emotion());
             }
 
-        moment.setMomentDate(dto.getMomentDate());
+        moment.setMomentDate(dto.momentDate());
 
         // Fechas automáticas de creación
         moment.setCreationDate(LocalDateTime.now());

@@ -6,7 +6,9 @@ import dev.alejandro.mappers.MomentMapper;
 import dev.alejandro.models.Moment;
 import dev.alejandro.repositories.MomentRepository;
 import dev.alejandro.singletons.MomentRepositorySingleton;
+import dev.alejandro.views.MomentFormGetView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MomentController {
@@ -22,31 +24,63 @@ public class MomentController {
         this.repository = repository;
     }
 
-    public void storeCharacter(MomentDTOInput dto) { //Crea un nuevo momento//
-        Moment moment = MomentMapper.toEntity(dto);
-        repository.storeMoment(moment);
+    public void storeMoment(MomentDTOInput dto) { // Crea un nuevo momento//
+
+        Moment momentToSave = MomentMapper.toEntity(dto);
+        repository.setDb("momentsDatabase");
+        repository.storeMoment(momentToSave);
     }
 
-    public List<MomentDTOOutput> listMoments() {  //Lista todos los momentos//
+    public void listMoments() {
+        List<MomentDTOOutput> momentDTOOutputs = new ArrayList<>();
         List<Moment> moments = repository.getAllMoments();
-        return MomentMapper.toDTOList(moments);
+
+        for (Moment moment : moments) {
+            momentDTOOutputs.add(new MomentDTOOutput(
+                    moment.getId(),
+                    moment.getTitle(),
+                    moment.getDescription(),
+                    moment.getEmotion(),
+                    moment.getMomentDate(),
+                    moment.getCreationDate(),
+                    moment.getModificationDate()));
+
+            MomentFormGetView.printMoments(momentDTOOutputs);
+        }
     }
 
-    public MomentDTOOutput getMomentById(int id) {  //Busca un momento por ID//
+    public MomentDTOOutput getMomentById(int id) { // Busca un momento por ID//
         Moment moment = repository.getMomentById(id);
         return moment != null ? MomentMapper.toDTO(moment) : null;
     }
 
-    public void updateMoment(MomentDTOInput dto) { //Actualiza un momento existente//
+    public void updateMoment(MomentDTOInput dto) { // Actualiza un momento existente//
         Moment moment = MomentMapper.toEntity(dto);
         repository.updateMoment(moment);
     }
 
-    public void deleteMoment(int id) { //Elimina un momento//
+    public void deleteMoment(int id) { // Elimina un momento//
         repository.deleteMoment(id);
     }
 
-    
+    public List<MomentDTOOutput> getAllMoments() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getAllMoments'");
+    }
 
+    public List<MomentDTOOutput> getByEmotion(String emotion) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getByEmotion'");
+    }
+
+    public List<MomentDTOOutput> getByMonth(int month) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getByMonth'");
+    }
+
+    public void addMoment(MomentDTOInput dto) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'addMoment'");
+    }
 
 }
