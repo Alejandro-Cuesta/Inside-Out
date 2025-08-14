@@ -41,14 +41,13 @@ public class MomentMapper {
         //Convierte un objeto Moment a un DTO de salida//
         public static MomentDTOOutput toDTO(Moment moment) {
         return new MomentDTOOutput(
-                moment.getId(),
-                moment.getTitle(),
-                moment.getEmotion() != null ? moment.getEmotion().name() : null,
-                moment.getDescription(),
-                moment.getMomentDate(),
-                moment.getCreationDate(),
-                moment.getModificationDate()
-        );
+               moment.getId(),
+                    moment.getTitle(),
+                    moment.getDescription(),
+                    moment.getEmotion(),
+                    moment.getMomentDate(),
+                    moment.getCreationDate(),
+                    moment.getModificationDate());
         }
 
         //Método para convertir listas completas//
