@@ -2,15 +2,15 @@ package dev.alejandro.dtos;
 
 import java.time.LocalDate;
 
-public class CharacterDTOInput {
+public class MomentDTOInput {
     private String title;
     private String description;
     private String emotion; //Guardamos el nombre de la emoción como String//
     private LocalDate momentDate;
 
-    public CharacterDTOInput() {}
+    public MomentDTOInput() {}
 
-    public CharacterDTOInput(String title, String description, String emotion, LocalDate momentDate) {
+    public MomentDTOInput(String title, String description, String emotion, LocalDate momentDate) {
         this.title = title;
         this.description = description;
         this.emotion = emotion;

@@ -3,7 +3,7 @@ package dev.alejandro.dtos;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-public class CharacterDTOOutput {
+public class MomentDTOOutput {
     private int id;
     private String title;
     private String description;
@@ -12,9 +12,9 @@ public class CharacterDTOOutput {
     private LocalDateTime creationDate;
     private LocalDateTime modificationDate;
 
-    public CharacterDTOOutput() {}
+    public MomentDTOOutput() {}
 
-    public CharacterDTOOutput(int id, String title, String description, String emotion,
+    public MomentDTOOutput(int id, String title, String description, String emotion,
                               LocalDate momentDate, LocalDateTime creationDate, LocalDateTime modificationDate) {
         this.id = id;
         this.title = title;

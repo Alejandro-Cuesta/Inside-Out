@@ -1,7 +1,7 @@
 package dev.alejandro.mappers;
 
-import dev.alejandro.dtos.CharacterDTOInput;
-import dev.alejandro.dtos.CharacterDTOOutput;
+import dev.alejandro.dtos.MomentDTOInput;
+import dev.alejandro.dtos.MomentDTOOutput;
 import dev.alejandro.models.Moment;
 import dev.alejandro.models.Emotion;
 
@@ -9,11 +9,11 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class CharacterMapper {
+public class MomentMapper {
 
     
     //Convierte un DTO de entrada en un objeto Moment
-    public static Moment toEntity(CharacterDTOInput dto) {
+    public static Moment toEntity(MomentDTOInput dto) {
         Moment moment = new Moment();
 
         // ID no se asigna aquí, lo pone la base de datos o lógica de negocio
@@ -38,8 +38,8 @@ public class CharacterMapper {
     }
 
         //Convierte un objeto Moment a un DTO de salida//
-        public static CharacterDTOOutput toDTO(Moment moment) {
-        return new CharacterDTOOutput(
+        public static MomentDTOOutput toDTO(Moment moment) {
+        return new MomentDTOOutput(
                 moment.getId(),
                 moment.getTitle(),
                 moment.getDescription(),
@@ -51,9 +51,9 @@ public class CharacterMapper {
         }
 
         //Método para convertir listas completas//
-        public static List<CharacterDTOOutput> toDTOList(List<Moment> moments) {
+        public static List<MomentDTOOutput> toDTOList(List<Moment> moments) {
         return moments.stream()
-                .map(CharacterMapper::toDTO)
+                .map(MomentMapper::toDTO)
                 .collect(Collectors.toList());
         }
 }

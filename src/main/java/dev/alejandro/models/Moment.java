@@ -2,7 +2,6 @@ package dev.alejandro.models;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Objects;
 
 public class Moment { //Representa un momento vivido en el Diario y toda la informacion de ese momento//
      //Artributos basicos de un momento//

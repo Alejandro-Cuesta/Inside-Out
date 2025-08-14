@@ -1,5 +1,5 @@
 package dev.alejandro.views;
 
-public class ConsoleView {
+public class HomeView {
     
 }

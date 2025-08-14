@@ -1,21 +1,26 @@
 package dev.alejandro.db;
 
+import dev.alejandro.contracts.InterfaceDatabase;
 import dev.alejandro.models.Moment;
-import dev.alejandro.repositories.CharacterRepository;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class DataBase implements CharacterRepository {
+public class Database implements InterfaceDatabase {
     private final List<Moment> moments = new ArrayList<>();
 
     @Override
-    public List<Moment> findAll() {
-        return new ArrayList<>(moments);
+    public List<Moment> getAll() {
+        return  moments;
     }
 
     @Override
-    public void save(Moment moment) {
+    public void store(Moment moment) {
         moments.add(moment);
+    }
+
+    @Override
+    public void deleteMoment(int id) {
+        moments.remove(id);
     }
 }
