@@ -43,8 +43,8 @@ public class MomentMapper {
         return new MomentDTOOutput(
                 moment.getId(),
                 moment.getTitle(),
-                moment.getDescription(),
                 moment.getEmotion() != null ? moment.getEmotion().name() : null,
+                moment.getDescription(),
                 moment.getMomentDate(),
                 moment.getCreationDate(),
                 moment.getModificationDate()
