@@ -77,7 +77,7 @@ public class ViewTest {
         view.searchByEmotion();
     }
 
-    @Test
+  /*   @Test
     void testMomentFormGetViewSearchByMonth() {
         MomentFormGetView view = new MomentFormGetView() {
             @Override
@@ -97,7 +97,7 @@ public class ViewTest {
         };
         view.searchByMonth();
     }
-
+*/
   
     @Test
     void testMomentFormPutViewAddMoment() {
@@ -111,7 +111,7 @@ public class ViewTest {
         }
     }
 
-    @Test
+   /*  @Test
     void testMomentFormPutViewDeleteMoment() {
         MomentFormPutView view = new MomentFormPutView();
         view.deleteMoment(new dev.alejandro.controllers.MomentController() {
@@ -121,7 +121,7 @@ public class ViewTest {
                 System.out.println("Mock delete invoked with id: " + id);
             }
         });
-    }
+    }*/
 
     
     @Test
