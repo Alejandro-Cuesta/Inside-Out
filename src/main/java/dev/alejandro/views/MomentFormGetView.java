@@ -15,7 +15,8 @@ public class MomentFormGetView extends View{
     }
 
     public void showAllMoments() {
-        controller.listMoments();
+        List<MomentDTOOutput> moments = controller.listMoments();
+        printMoments(moments);
 
     }
 

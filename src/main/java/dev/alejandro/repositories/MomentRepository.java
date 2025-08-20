@@ -17,11 +17,16 @@ public class MomentRepository {
     public void storeMoment(Moment moment) { //Crea (store)//
         moment.setId(currentId++);
         moments.add(moment);
+        if (db != null) {
+            db.store(moment);
+        }
     }
 
     public void setDb(String db) {
-        if (db == "momentsDatabase") this.db = new Database();
+        if ("momentsDatabase".equals(db)) {
+            this.db = new Database();
     }
+}
 
     public List<Moment> getAllMoments() { //Lee todos los momentos//
         return db.getAllMoments(); // Devulve una copia para evitar modificaciones externas//
@@ -45,5 +50,8 @@ public class MomentRepository {
 
     public void deleteMoment(int id) { //Elimina//
         moments.removeIf(m -> m.getId() == id);
+        if (db != null) {
+            db.deleteMoment(id);
+        }
     }
 }

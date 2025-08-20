@@ -1,14 +1,13 @@
 package dev.alejandro.views;
 
-//import dev.alejandro.controllers.MomentController;
-//import dev.alejandro.singletons.MomentControllerSingleton;
+import dev.alejandro.controllers.MomentController;
+import dev.alejandro.singletons.MomentControllerSingleton;
 
 public class HomeView extends View {
 
-    //private static MomentController CONTROLLER = MomentControllerSingleton.getInstance();
+    private static final MomentController CONTROLLER = MomentControllerSingleton.getInstance();
 
     public static void showMenu() {
-
         int option;
         do {
             System.out.println("\n===== MENÚ PRINCIPAL =====");
@@ -23,8 +22,27 @@ public class HomeView extends View {
             try {
                 option = Integer.parseInt(SCANNER.nextLine());
 
-                if (option == 1) {
-                    MomentFormPutView.addMoment();
+                switch (option) {
+                    case 1:
+                        MomentFormPutView.addMoment();
+                        break;
+                    case 2:
+                        new MomentFormGetView().showAllMoments();
+                        break;
+                    case 3:
+                        new MomentFormGetView().searchByEmotion();
+                        break;
+                    case 4:
+                        new MomentFormGetView().searchByMonth();
+                        break;
+                    case 5:
+                        new MomentFormPutView().deleteMoment(CONTROLLER);
+                        break;
+                    case 0:
+                        System.out.println("Saliendo del programa...");
+                        break;
+                    default:
+                        System.out.println("Opcion invalida. Prueba de nuevo");
                 }
              
             } catch (NumberFormatException e) {

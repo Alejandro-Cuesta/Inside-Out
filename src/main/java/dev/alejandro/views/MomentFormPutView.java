@@ -29,8 +29,6 @@ public class MomentFormPutView extends View{
 
         CONTROLLER.storeMoment(dtoInput);
         System.out.println("Momento añadido correctamente");
-
-        HomeView.showMenu();
     }
 
     public void deleteMoment(MomentController controller) {

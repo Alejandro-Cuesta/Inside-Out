@@ -6,7 +6,6 @@ import dev.alejandro.mappers.MomentMapper;
 import dev.alejandro.models.Moment;
 import dev.alejandro.repositories.MomentRepository;
 import dev.alejandro.singletons.MomentRepositorySingleton;
-import dev.alejandro.views.MomentFormGetView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +25,7 @@ public class MomentController {
         repository.storeMoment(momentToSave);
     }
 
-    public void listMoments() {
+    public List<MomentDTOOutput> listMoments() {
         List<MomentDTOOutput> momentDTOOutputs = new ArrayList<>();
         List<Moment> moments = repository.getAllMoments();
 
@@ -38,16 +37,10 @@ public class MomentController {
                     moment.getEmotion(),
                     moment.getMomentDate(),
                     moment.getCreationDate(),
-                    moment.getModificationDate()));
-
-            MomentFormGetView.printMoments(momentDTOOutputs);
+                    moment.getModificationDate()));          
         }
+        return momentDTOOutputs;
     }
-    
-    /*public MomentDTOOutput getMomentByEmotion() { 
-        Moment moment = repository.getMomentByEmotion(Emotion);
-        return moment != null ? MomentMapper.toDTO(moment) : null;
-    }*/
 
     public MomentDTOOutput getMomentById(int id) { // Busca un momento por ID//
         Moment moment = repository.getMomentById(id);
@@ -63,14 +56,45 @@ public class MomentController {
         repository.deleteMoment(id);
     }
 
-    public List<MomentDTOOutput> getByEmotion(String emotion) {
-        throw new UnsupportedOperationException("Unimplemented method 'getByEmotion'");
-    }
+   public List<MomentDTOOutput> getByEmotion(String emotion) {
+        List<MomentDTOOutput> filteredMoments = new ArrayList<>();
+        List<Moment> moments = repository.getAllMoments();
 
+        for (Moment moment : moments) {
+            if (moment.getEmotion().toString().equalsIgnoreCase(emotion)) {
+                filteredMoments.add(new MomentDTOOutput(
+                        moment.getId(),
+                        moment.getTitle(),
+                        moment.getDescription(),
+                        moment.getEmotion(),
+                        moment.getMomentDate(),
+                        moment.getCreationDate(),
+                        moment.getModificationDate()
+                ));
+            }
+        }
+
+        return filteredMoments;
+    }
+    
     public List<MomentDTOOutput> getByMonth(int month) {
-        throw new UnsupportedOperationException("Unimplemented method 'getByMonth'");
+        List<MomentDTOOutput> filteredMoments = new ArrayList<>();
+        List<Moment> moments = repository.getAllMoments();
+
+        for (Moment moment : moments) {
+            if (moment.getMomentDate().getMonthValue() == month) {
+                filteredMoments.add(new MomentDTOOutput(
+                        moment.getId(),
+                        moment.getTitle(),
+                        moment.getDescription(),
+                        moment.getEmotion(),
+                        moment.getMomentDate(),
+                        moment.getCreationDate(),
+                        moment.getModificationDate()
+                ));
+            }
+        }
+
+        return filteredMoments;
     }
-
-
-
 }

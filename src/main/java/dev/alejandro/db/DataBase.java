@@ -25,6 +25,6 @@ public class Database implements InterfaceDatabase {
 
     @Override
     public void deleteMoment(int id) {
-        moments.remove(id);
+        moments.removeIf(m -> m.getId() == id);
     }
 }
