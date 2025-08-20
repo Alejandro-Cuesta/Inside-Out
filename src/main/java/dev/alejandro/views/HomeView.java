@@ -1,15 +1,13 @@
 package dev.alejandro.views;
 
-import dev.alejandro.controllers.MomentController;
-import dev.alejandro.singletons.MomentControllerSingleton;
+//import dev.alejandro.controllers.MomentController;
+//import dev.alejandro.singletons.MomentControllerSingleton;
 
 public class HomeView extends View {
 
-    private static MomentController CONTROLLER = MomentControllerSingleton.getInstance();
+    //private static MomentController CONTROLLER = MomentControllerSingleton.getInstance();
 
     public static void showMenu() {
-        MomentFormGetView getView = new MomentFormGetView(CONTROLLER);
-        MomentFormPutView putView = new MomentFormPutView(CONTROLLER);
 
         int option;
         do {
@@ -28,6 +26,7 @@ public class HomeView extends View {
                 if (option == 1) {
                     MomentFormPutView.addMoment();
                 }
+             
             } catch (NumberFormatException e) {
                 System.out.println("Por favor introduce un número válido.");
                 option = -1;

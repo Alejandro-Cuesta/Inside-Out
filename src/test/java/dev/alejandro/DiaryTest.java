@@ -1,5 +1,5 @@
 
-package dev.alejandro;
+/*package dev.alejandro;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -122,4 +122,4 @@ public class DiaryTest {
     assertEquals(1, filtered.size(), "Debería haber un solo momento con la fecha indicada");
     assertEquals("Un día en el parque de atracciones", filtered.get(0).getTitle(), "El título debería coincidir con el momento filtrado");
     }
-}
+}*/

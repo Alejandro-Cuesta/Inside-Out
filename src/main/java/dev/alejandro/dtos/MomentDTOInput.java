@@ -1,6 +1,10 @@
 package dev.alejandro.dtos;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
-public record  MomentDTOInput(String title, String description, String emotion, LocalDate momentDate) {}
+import dev.alejandro.models.Emotion;
+
+public record  MomentDTOInput(String title, String description, Emotion emotion,
+                              LocalDate momentDate, LocalDateTime creationDate, LocalDateTime modificationDate) {}
 

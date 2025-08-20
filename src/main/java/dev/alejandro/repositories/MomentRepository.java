@@ -24,7 +24,7 @@ public class MomentRepository {
     }
 
     public List<Moment> getAllMoments() { //Lee todos los momentos//
-        return db.getAll(); // Devulve una copia para evitar modificaciones externas//
+        return db.getAllMoments(); // Devulve una copia para evitar modificaciones externas//
     }
 
     public Moment getMomentById(int id) {  //Lee  por ID//

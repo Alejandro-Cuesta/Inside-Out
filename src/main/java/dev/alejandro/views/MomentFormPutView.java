@@ -2,49 +2,40 @@ package dev.alejandro.views;
 
 import dev.alejandro.controllers.MomentController;
 import dev.alejandro.dtos.MomentDTOInput;
+import dev.alejandro.models.Emotion;
+import dev.alejandro.singletons.MomentControllerSingleton;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Scanner;
 
-public class MomentFormPutView {
+public class MomentFormPutView extends View{
 
-    private final MomentController controller;
-    private final Scanner scanner;
-
-    public MomentFormPutView(MomentController controller) {
-        this.controller = controller;
-        this.scanner = new Scanner(System.in);
-    }
+    private static MomentController CONTROLLER = MomentControllerSingleton.getInstance();
 
     public static void addMoment() {
         System.out.print("Título: ");
-        String title = scanner.nextLine();
+        String title = SCANNER.nextLine();
 
         System.out.print("Descripción: ");
-        String description = scanner.nextLine();
+        String description = SCANNER.nextLine();
 
-        System.out.print("Emoción: ");
-        String emotion = scanner.nextLine();
+        Emotion emotion = EmotionListView.printEmotionList();
 
         System.out.print("Fecha del momento (yyyy-MM-dd): ");
-        String dateInput = scanner.nextLine();
+        String dateInput = SCANNER.nextLine();
         LocalDate momentDate = LocalDate.parse(dateInput, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 
-        MomentDTOInput dto = new MomentDTOInput();
-        dto.setTitle(title);
-        dto.setDescription(description);
-        dto.setEmotion(emotion);
-        dto.setMomentDate(momentDate);
+        MomentDTOInput dtoInput = new MomentDTOInput(title, description, emotion, momentDate, null, null);
 
-        controller.addMoment(dto);
-
+        CONTROLLER.storeMoment(dtoInput);
         System.out.println("Momento añadido correctamente");
+
+        HomeView.showMenu();
     }
 
-    public void deleteMoment() {
+    public void deleteMoment(MomentController controller) {
         System.out.print("ID del momento a eliminar: ");
-        int id = Integer.parseInt(scanner.nextLine()); // Leemos como int directamente
+        int id = Integer.parseInt(SCANNER.nextLine()); // Leemos como int directamente
         controller.deleteMoment(id);
         System.out.println("Momento eliminado correctamente");
     }

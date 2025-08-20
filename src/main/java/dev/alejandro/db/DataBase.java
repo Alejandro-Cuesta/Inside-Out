@@ -7,16 +7,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Database implements InterfaceDatabase {
-    private final List<Moment> moments = new ArrayList<>();
-
-    @Override
-    public List<Moment> getAll() {
-        return  moments;
+    private final List<Moment> moments;
+    public Database () { 
+       this.moments = new ArrayList<>();
     }
+
 
     @Override
     public void store(Moment moment) {
         moments.add(moment);
+    }
+
+     @Override
+    public List<Moment> getAllMoments() {
+        return  moments;
     }
 
     @Override

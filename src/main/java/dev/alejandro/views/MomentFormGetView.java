@@ -2,26 +2,26 @@ package dev.alejandro.views;
 
 import dev.alejandro.controllers.MomentController;
 import dev.alejandro.dtos.MomentDTOOutput;
+import dev.alejandro.singletons.MomentControllerSingleton;
+
 import java.util.List;
-import java.util.Scanner;
 
 public class MomentFormGetView extends View{
 
     private final MomentController controller;
 
-    public MomentFormGetView(MomentController controller) {
-        this.controller = controller;
-        this.scanner = new Scanner(System.in);
+    public MomentFormGetView() {
+        this.controller = MomentControllerSingleton.getInstance();
     }
 
     public void showAllMoments() {
-        List<MomentDTOOutput> moments = controller.getAllMoments();
-        printMoments(moments);
+        controller.listMoments();
+
     }
 
     public void searchByEmotion() {
         System.out.print("Introduce la emoción: ");
-        String emotion = scanner.nextLine();
+        String emotion = SCANNER.nextLine();
         List<MomentDTOOutput> moments = controller.getByEmotion(emotion);
         printMoments(moments);
     }
@@ -30,7 +30,7 @@ public class MomentFormGetView extends View{
         System.out.print("Introduce el número de mes (1-12): ");
         int month;
         try {
-            month = Integer.parseInt(scanner.nextLine());
+            month = Integer.parseInt(SCANNER.nextLine());
         } catch (NumberFormatException e) {
             System.out.println("Mes inválido.");
             return;

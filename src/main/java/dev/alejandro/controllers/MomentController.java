@@ -20,12 +20,7 @@ public class MomentController {
 
     }
 
-    public MomentController(MomentRepository repository) {
-        this.repository = repository;
-    }
-
     public void storeMoment(MomentDTOInput dto) { // Crea un nuevo momento//
-
         Moment momentToSave = MomentMapper.toEntity(dto);
         repository.setDb("momentsDatabase");
         repository.storeMoment(momentToSave);
@@ -48,6 +43,11 @@ public class MomentController {
             MomentFormGetView.printMoments(momentDTOOutputs);
         }
     }
+    
+    /*public MomentDTOOutput getMomentByEmotion() { 
+        Moment moment = repository.getMomentByEmotion(Emotion);
+        return moment != null ? MomentMapper.toDTO(moment) : null;
+    }*/
 
     public MomentDTOOutput getMomentById(int id) { // Busca un momento por ID//
         Moment moment = repository.getMomentById(id);
@@ -63,24 +63,14 @@ public class MomentController {
         repository.deleteMoment(id);
     }
 
-    public List<MomentDTOOutput> getAllMoments() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getAllMoments'");
-    }
-
     public List<MomentDTOOutput> getByEmotion(String emotion) {
-        // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'getByEmotion'");
     }
 
     public List<MomentDTOOutput> getByMonth(int month) {
-        // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'getByMonth'");
     }
 
-    public void addMoment(MomentDTOInput dto) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'addMoment'");
-    }
+
 
 }

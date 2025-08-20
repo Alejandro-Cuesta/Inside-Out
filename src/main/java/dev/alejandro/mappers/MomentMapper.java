@@ -3,7 +3,6 @@ package dev.alejandro.mappers;
 import dev.alejandro.dtos.MomentDTOInput;
 import dev.alejandro.dtos.MomentDTOOutput;
 import dev.alejandro.models.Moment;
-import dev.alejandro.models.Emotion;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -23,7 +22,7 @@ public class MomentMapper {
 
         // Convertimos el String de emoción a Enum
         try {
-            moment.setEmotion(Emotion.valueOf(dto.emotion().toUpperCase()));
+            moment.setEmotion(dto.emotion());
         } 
             catch (IllegalArgumentException e) {
             throw new RuntimeException("Emoción no válida: " + dto.emotion());
@@ -42,12 +41,12 @@ public class MomentMapper {
         public static MomentDTOOutput toDTO(Moment moment) {
         return new MomentDTOOutput(
                moment.getId(),
-                    moment.getTitle(),
-                    moment.getDescription(),
-                    moment.getEmotion(),
-                    moment.getMomentDate(),
-                    moment.getCreationDate(),
-                    moment.getModificationDate());
+                moment.getTitle(),
+                moment.getDescription(),
+                moment.getEmotion(),
+                moment.getMomentDate(),
+                moment.getCreationDate(),
+                moment.getModificationDate());
         }
 
         //Método para convertir listas completas//
