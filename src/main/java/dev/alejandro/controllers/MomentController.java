@@ -12,7 +12,7 @@ import java.util.List;
 
 public class MomentController {
 
-    private MomentRepository repository;
+    protected MomentRepository repository;
 
     public MomentController() {
         this.repository = MomentRepositorySingleton.getInstance();
