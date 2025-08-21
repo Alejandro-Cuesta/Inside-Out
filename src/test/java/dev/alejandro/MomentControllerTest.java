@@ -41,7 +41,8 @@ class MomentControllerTest {
                 Emotion.Alegria,
                 LocalDate.of(2020, 6, 6),
                 LocalDateTime.now(),
-                LocalDateTime.now()
+                LocalDateTime.now(),
+                true
         );
 
         controller.storeMoment(input);
@@ -58,7 +59,8 @@ class MomentControllerTest {
                 Emotion.Alegria,
                 LocalDate.of(2020, 6, 6),
                 LocalDateTime.now(),
-                LocalDateTime.now()
+                LocalDateTime.now(),
+                true
         );
         when(repoMock.getAllMoments()).thenReturn(Arrays.asList(m));
 
@@ -78,7 +80,8 @@ class MomentControllerTest {
                 Emotion.Alegria,
                 LocalDate.of(2020, 6, 6),
                 LocalDateTime.now(),
-                LocalDateTime.now()
+                LocalDateTime.now(),
+                true
         );
         when(repoMock.getMomentById(1)).thenReturn(m);
 
@@ -97,7 +100,9 @@ class MomentControllerTest {
                 Emotion.Alegria,
                 LocalDate.of(2020, 6, 6),
                 LocalDateTime.now(),
-                LocalDateTime.now()
+                LocalDateTime.now(),
+                true
+
         );
 
         controller.updateMoment(input);
@@ -115,9 +120,9 @@ class MomentControllerTest {
     @Test
     void testGetByEmotion() {
         Moment m1 = new Moment(1, "Parque", "Parrillada", Emotion.Alegria,
-                LocalDate.of(2020, 6, 6), LocalDateTime.now(), LocalDateTime.now());
+                LocalDate.of(2020, 6, 6), LocalDateTime.now(), LocalDateTime.now(), true);
         Moment m2 = new Moment(2, "Playa", "Natación", Emotion.Tristeza,
-                LocalDate.of(2020, 7, 7), LocalDateTime.now(), LocalDateTime.now());
+                LocalDate.of(2020, 7, 7), LocalDateTime.now(), LocalDateTime.now(), false);
 
         when(repoMock.getAllMoments()).thenReturn(Arrays.asList(m1, m2));
 
@@ -130,9 +135,9 @@ class MomentControllerTest {
     @Test
     void testGetByMonth() {
         Moment m1 = new Moment(1, "Parque", "Parrillada", Emotion.Alegria,
-                LocalDate.of(2020, 6, 6), LocalDateTime.now(), LocalDateTime.now());
+                LocalDate.of(2020, 6, 6), LocalDateTime.now(), LocalDateTime.now(), true);
         Moment m2 = new Moment(2, "Playa", "Natación", Emotion.Tristeza,
-                LocalDate.of(2020, 7, 7), LocalDateTime.now(), LocalDateTime.now());
+                LocalDate.of(2020, 7, 7), LocalDateTime.now(), LocalDateTime.now(), false);
 
         when(repoMock.getAllMoments()).thenReturn(Arrays.asList(m1, m2));
 

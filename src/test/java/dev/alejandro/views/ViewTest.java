@@ -48,7 +48,8 @@ public class ViewTest {
                                 Emotion.Alegria,
                                 LocalDate.of(2025, 1, 1),
                                 LocalDateTime.of(2025, 1, 1, 12, 0),
-                                LocalDateTime.of(2025, 1, 1, 12, 0)
+                                LocalDateTime.of(2025, 1, 1, 12, 0),
+                                true
                         )
                 ));
             }
@@ -69,7 +70,8 @@ public class ViewTest {
                                 Emotion.Tristeza,
                                 LocalDate.of(2025, 2, 2),
                                 LocalDateTime.of(2025, 2, 2, 12, 0),
-                                LocalDateTime.of(2025, 2, 2, 12, 0)
+                                LocalDateTime.of(2025, 2, 2, 12, 0),
+                                false
                         )
                 ));
             }

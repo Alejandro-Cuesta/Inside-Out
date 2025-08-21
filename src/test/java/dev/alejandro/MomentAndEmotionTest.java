@@ -27,13 +27,14 @@ class MomentAndEmotionTest {
         LocalDateTime updated = LocalDateTime.now();
 
         Moment m = new Moment(
-                1,
-                "Título de prueba",
-                "Descripción de prueba",
-                Emotion.Alegria,
-                fecha,
-                created,
-                updated
+        1,
+        "Título de prueba",
+        "Descripción de prueba",
+        Emotion.Alegria,
+        fecha,
+        created,
+        updated,
+        true // o false, según lo que quieras probar
         );
 
         assertEquals(1, m.getId());

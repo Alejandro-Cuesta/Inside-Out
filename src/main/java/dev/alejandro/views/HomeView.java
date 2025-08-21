@@ -16,6 +16,8 @@ public class HomeView extends View {
             System.out.println("3. Buscar por emoción");
             System.out.println("4. Buscar por mes");
             System.out.println("5. Eliminar momento");
+            System.out.println("6. Ver momentos buenos");
+            System.out.println("7. Ver momentos malos");
             System.out.println("0. Salir");
             System.out.print("Elige una opción: ");
 
@@ -37,6 +39,12 @@ public class HomeView extends View {
                         break;
                     case 5:
                         new MomentFormPutView().deleteMoment(CONTROLLER);
+                        break;
+                    case 6:
+                        new MomentFormGetView().showFilteredMoments(true);
+                        break;
+                    case 7:
+                        new MomentFormGetView().showFilteredMoments(false);
                         break;
                     case 0:
                         System.out.println("Saliendo del programa...");

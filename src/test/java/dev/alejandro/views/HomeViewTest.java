@@ -3,7 +3,6 @@ package dev.alejandro.views;
 import org.junit.jupiter.api.*;
 import java.io.*;
 
-@Disabled("Todos los tests están deshabilitados temporalmente porque HomeView.showMenu() provoca bucle")
 class HomeViewTest {
 
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
@@ -20,29 +19,19 @@ class HomeViewTest {
     }
 
     @Test
-    @Disabled("Deshabilitado temporalmente para evitar bucle infinito")
-    void testShowMenuExitsImmediately() {
-        Runnable task = () -> {
-            HomeView.showMenu();
-        };
-
-        Thread t = new Thread(task);
-        t.start();
+    void testShowMenuPrintsHeader() {
+        Thread menuThread = new Thread(HomeView::showMenu);
+        menuThread.setDaemon(true); // Hilo de fondo que no bloquea la terminación del test
+        menuThread.start();
 
         try {
-            t.join(500);
+            menuThread.join(500); // Espera máximo 500ms
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
 
-        if (t.isAlive()) {
-            t.stop();
-        }
-
         String output = outContent.toString();
-        Assertions.assertTrue(
-            output.contains("MENÚ PRINCIPAL"),
-            "El menú principal debería haberse imprimido"
-        );
+        Assertions.assertTrue(output.contains("MENÚ PRINCIPAL"),
+                "El menú principal debería haberse imprimido");
     }
 }

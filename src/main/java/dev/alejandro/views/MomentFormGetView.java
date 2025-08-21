@@ -20,6 +20,13 @@ public class MomentFormGetView extends View{
 
     }
 
+    public void showFilteredMoments(boolean good) {
+    List<MomentDTOOutput> moments = good 
+    ? controller.getMomentsByType(true) 
+    : controller.getMomentsByType(false);
+    printMoments(moments);
+}
+
     public void searchByEmotion() {
         System.out.print("Introduce la emoción: ");
         String emotion = SCANNER.nextLine();

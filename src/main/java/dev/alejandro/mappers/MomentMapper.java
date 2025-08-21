@@ -16,23 +16,22 @@ public class MomentMapper {
         Moment moment = new Moment();
     
 
-        // ID no se asigna aquí, lo pone la base de datos o lógica de negocio
+       
         moment.setTitle(dto.title());
         moment.setDescription(dto.description());
-
-        // Convertimos el String de emoción a Enum
-        try {
-            moment.setEmotion(dto.emotion());
-        } 
-            catch (IllegalArgumentException e) {
-            throw new RuntimeException("Emoción no válida: " + dto.emotion());
-            }
-
+        moment.setEmotion(dto.emotion());
         moment.setMomentDate(dto.momentDate());
 
-        // Fechas automáticas de creación
         moment.setCreationDate(LocalDateTime.now());
         moment.setModificationDate(null);
+       // Decidir si es bueno o malo según la emoción
+        switch (dto.emotion()) {
+            case Alegria -> moment.setGood(true);   // emociones positivas
+            case Tristeza, Ira, Asco -> moment.setGood(false);  // emociones negativas
+            default -> moment.setGood(true); // por defecto bueno
+        }
+
+       
 
         return moment;
     }
@@ -40,13 +39,14 @@ public class MomentMapper {
         //Convierte un objeto Moment a un DTO de salida//
         public static MomentDTOOutput toDTO(Moment moment) {
         return new MomentDTOOutput(
-               moment.getId(),
+                moment.getId(),
                 moment.getTitle(),
                 moment.getDescription(),
                 moment.getEmotion(),
                 moment.getMomentDate(),
                 moment.getCreationDate(),
-                moment.getModificationDate());
+                moment.getModificationDate(),
+                moment.isGood());
         }
 
         //Método para convertir listas completas//

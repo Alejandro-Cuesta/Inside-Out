@@ -3,8 +3,8 @@ package dev.alejandro.models;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-public class Moment { //Representa un momento vivido en el Diario y toda la informacion de ese momento//
-     //Artributos basicos de un momento//
+public class Moment { // Representa un momento vivido en el Diario y toda la información de ese momento
+    // Atributos básicos de un momento
     private int id;
     private String title;
     private String description;
@@ -12,13 +12,16 @@ public class Moment { //Representa un momento vivido en el Diario y toda la info
     private LocalDate momentDate;
     private LocalDateTime creationDate;
     private LocalDateTime modificationDate;
+    private boolean isGood; // true = momento bueno, false = momento malo
 
     public Moment() {
-
+        // Por defecto, podemos ponerlo como bueno
+        this.isGood = true;
     }
 
     public Moment(int id, String title, String description, Emotion emotion,
-                  LocalDate momentDate, LocalDateTime creationDate, LocalDateTime modificationDate) {
+                  LocalDate momentDate, LocalDateTime creationDate, LocalDateTime modificationDate,
+                  boolean isGood) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -26,20 +29,21 @@ public class Moment { //Representa un momento vivido en el Diario y toda la info
         this.momentDate = momentDate;
         this.creationDate = creationDate;
         this.modificationDate = modificationDate;
+        this.isGood = isGood;
     }
 
-    //Getters y Setters//
+    // Getters y Setters
     public int getId() { return id; }
-    public void setId(int id) { this.id = id;}
+    public void setId(int id) { this.id = id; }
 
-    public String getTitle() { return title;}
-    public void setTitle (String title) { this.title = title; }
+    public String getTitle() { return title; }
+    public void setTitle(String title) { this.title = title; }
 
-    public String getDescription() { return description;}
-    public void setDescription (String description) { this.description = description;}
+    public String getDescription() { return description; }
+    public void setDescription(String description) { this.description = description; }
 
-    public Emotion getEmotion() { return emotion;}
-    public void setEmotion(Emotion emotion) { this.emotion = emotion;}
+    public Emotion getEmotion() { return emotion; }
+    public void setEmotion(Emotion emotion) { this.emotion = emotion; }
 
     public LocalDate getMomentDate() { return momentDate; }
     public void setMomentDate(LocalDate momentDate) { this.momentDate = momentDate; }
@@ -50,10 +54,12 @@ public class Moment { //Representa un momento vivido en el Diario y toda la info
     public LocalDateTime getModificationDate() { return modificationDate; }
     public void setModificationDate(LocalDateTime modificationDate) { this.modificationDate = modificationDate; }
 
+    public boolean isGood() { return isGood; }
+    public void setGood(boolean good) { isGood = good; }
 
-    @Override //Metodo toString de la clase Moment//
+    @Override
     public String toString() {
-        return "Moment{" + //Devuelve un String que muestra todos los atributos del objeto//
+        return "Moment{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
@@ -61,6 +67,7 @@ public class Moment { //Representa un momento vivido en el Diario y toda la info
                 ", momentDate=" + momentDate +
                 ", creationDate=" + creationDate +
                 ", modificationDate=" + modificationDate +
+                ", isGood=" + isGood +
                 '}';
     }
 }

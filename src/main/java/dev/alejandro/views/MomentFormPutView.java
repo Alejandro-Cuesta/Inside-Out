@@ -25,7 +25,7 @@ public class MomentFormPutView extends View{
         String dateInput = SCANNER.nextLine();
         LocalDate momentDate = LocalDate.parse(dateInput, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 
-        MomentDTOInput dtoInput = new MomentDTOInput(title, description, emotion, momentDate, null, null);
+        MomentDTOInput dtoInput = new MomentDTOInput(title, description, emotion, momentDate, null, null,true);
 
         CONTROLLER.storeMoment(dtoInput);
         System.out.println("Momento añadido correctamente");

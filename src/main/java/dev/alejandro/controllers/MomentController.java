@@ -37,7 +37,8 @@ public class MomentController {
                     moment.getEmotion(),
                     moment.getMomentDate(),
                     moment.getCreationDate(),
-                    moment.getModificationDate()));          
+                    moment.getModificationDate(),
+                    moment.isGood()));          
         }
         return momentDTOOutputs;
     }
@@ -56,7 +57,18 @@ public class MomentController {
         repository.deleteMoment(id);
     }
 
-   public List<MomentDTOOutput> getByEmotion(String emotion) {
+    public List<MomentDTOOutput> getMomentsByType(boolean isGood) {
+        List<MomentDTOOutput> filteredDTOs = new ArrayList<>();
+        List<Moment> filteredMoments = repository.getMomentsByType(isGood);
+
+        for (Moment moment : filteredMoments) {
+            filteredDTOs.add(MomentMapper.toDTO(moment));
+        }
+
+        return filteredDTOs;
+    }
+
+    public List<MomentDTOOutput> getByEmotion(String emotion) {
         List<MomentDTOOutput> filteredMoments = new ArrayList<>();
         List<Moment> moments = repository.getAllMoments();
 
@@ -69,8 +81,8 @@ public class MomentController {
                         moment.getEmotion(),
                         moment.getMomentDate(),
                         moment.getCreationDate(),
-                        moment.getModificationDate()
-                ));
+                        moment.getModificationDate(),
+                        moment.isGood()));
             }
         }
 
@@ -90,8 +102,8 @@ public class MomentController {
                         moment.getEmotion(),
                         moment.getMomentDate(),
                         moment.getCreationDate(),
-                        moment.getModificationDate()
-                ));
+                        moment.getModificationDate(),
+                        moment.isGood()));
             }
         }
 

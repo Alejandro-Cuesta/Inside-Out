@@ -6,5 +6,5 @@ import java.time.LocalDateTime;
 import dev.alejandro.models.Emotion;
 
 public record  MomentDTOInput(String title, String description, Emotion emotion,
-                              LocalDate momentDate, LocalDateTime creationDate, LocalDateTime modificationDate) {}
+                              LocalDate momentDate, LocalDateTime creationDate, LocalDateTime modificationDate, boolean isGood) {}
 
