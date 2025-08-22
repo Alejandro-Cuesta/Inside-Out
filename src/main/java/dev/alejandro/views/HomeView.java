@@ -1,7 +1,11 @@
 package dev.alejandro.views;
 
+import java.nio.file.Paths;
+
 import dev.alejandro.controllers.MomentController;
 import dev.alejandro.singletons.MomentControllerSingleton;
+import dev.alejandro.resources.CsvExporter;
+
 
 public class HomeView extends View {
 
@@ -18,6 +22,7 @@ public class HomeView extends View {
             System.out.println("5. Eliminar momento");
             System.out.println("6. Ver momentos buenos");
             System.out.println("7. Ver momentos malos");
+            System.out.println("8. Exportar a CSV");
             System.out.println("0. Salir");
             System.out.print("Elige una opción: ");
 
@@ -45,6 +50,11 @@ public class HomeView extends View {
                         break;
                     case 7:
                         new MomentFormGetView().showFilteredMoments(false);
+                        break;
+                    case 8:
+                        // Guardar el CSV en la carpeta resources
+                        String rutaCSV = Paths.get("src", "main", "resources", "momentos.csv").toString();
+                        CsvExporter.exportToCSV(CONTROLLER.getAllMoments(), rutaCSV);
                         break;
                     case 0:
                         System.out.println("Saliendo del programa...");

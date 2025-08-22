@@ -43,6 +43,10 @@ public class MomentController {
         return momentDTOOutputs;
     }
 
+    public List<Moment> getAllMoments() {
+    return repository.getAllMoments();
+}
+
     public MomentDTOOutput getMomentById(int id) { // Busca un momento por ID//
         Moment moment = repository.getMomentById(id);
         return moment != null ? MomentMapper.toDTO(moment) : null;
